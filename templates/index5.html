@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAA</title>
+     <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body id="body">
+
+    <section id="user_screen">
+
+            <div class="userCSS">
+                 <img src="{{ url_for('static', filename='imagens/user_img.png') }}" alt="Usuário" class="icons">
+                <p>{{user_name}}</p>
+            </div>
+        <div CLASS="userCSS">
+           
+            <a href="/feed">
+                 <img src="{{ url_for('static', filename='imagens/feed_icon.png') }}" alt="acessar Feed" class="icons">
+                Feed
+            </a>
+        </div>
+        <div class="userCSS">
+           
+            <a href="">
+                 <img src="{{ url_for('static', filename='imagens/doc_icon.png') }}" alt="acessar registros" class="icons">
+                meus registros
+            </a>
+        </div>
+      
+       <form action="/logout" method="post">
+            <button>
+                <img src="{{ url_for('static', filename='imagens/exit_icon.png') }}" alt="sair da sessão" class="icons">
+                SAIR DA SESSÃO</button>
+            </form>
+        
+
+        </section>
+
+    <section id="feed">
+
+        {% for item in ambientes%}
+        <div class="img_area">
+
+            <div class="img_user">
+            <div> 
+                <img src="{{ url_for('static', filename='imagens/user_img.png') }}" alt="Usuário" class="icons">
+                <p class="imgp2">{{item.rg_name}}</p>
+                </div>  
+            </div>
+
+            <p class="imgp"> <b>Nome:</b> {{item.nome}}</p>
+
+            <p class="imgp"> <b>Situação</b>: {{item.situacao}} </p>
+
+            <p class="imgp"> <b>Proprietário</b>:  {{item.pr_nome}}</p>
+
+            <p class="imgp"> <b>Descrição:</b>  {{item.desc}}</p>
+
+            
+
+            <div class='img_local'> 
+                <img  src="{{ url_for('static', filename='uploads/' + item.img) }}" alt="Foto do ambiente"  class='img_local'>
+            </div>
+
+
+        </div>
+
+    {% endfor%}
+
+        <div id="create">
+            <a href="/form_abnd">
+                +
+            </a>
+            </div>
+        </section>
+</body>
+</html>

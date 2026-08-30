@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body>
+    <div id="cbc">
+        <img src="{{ url_for('static', filename='imagens/logotipo.png') }}" alt="LOGORAA" id="logotRAA">
+        <nav class="links">
+            <a href="/" class="CBCBT"> INICIO </a>
+            <a href="/apresentacao" class="CBCBT"> QUEM SOMOS </a>
+            <a href="https://wa.me/qr/IWCJ2MPJQIIOI1" class="CBCBT"> CONTATE-NOS</a>
+        </nav>
+    </div>
+
+    <section id="cs">
+        <h1>CADASTRO</h1>
+        <div id="csbox">
+            <form action="/enviar" method="post" id="user_form">
+                <div class="CBT">
+                    <label for="name">Digite seu nome: </label>
+                    <input type="text" name="name" placeholder="user123k" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="email">Digite seu email: </label>
+                    <input type="email" name="email" placeholder="******@gmail.com" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="senha1">Digite sua senha: </label>
+                    <input type="password" name="password" placeholder="**********" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="senha2">Digite novamente sua senha:</label>
+                    <input type="password" name="re-password" placeholder="**********" required>
+                </div>
+
+                <div id="cbtLG">
+                    <a href="/login">já possui uma conta? Faça login</a>
+                </div>
+
+                <button type="submit">CADASTRAR</button>
+            </form>
+        </div>
+    </section>
+
+    
+
+    <p id="msg-erro" style="color: red; display: none; font-weight: bold;">
+    As senhas não coincidem. Digite novamente!
+</p>
+
+     <script>
+        const formulario = document.querySelector('form');
+
+    formulario.addEventListener('submit', function(event) {
+        // Pega os valores dos campos de senha 
+        const senha = document.querySelector('input[name="password"]').value;
+        const reSenha = document.querySelector('input[name="re-password"]').value;
+        const msgErro = document.getElementById('msg-erro');
+
+        // 2. Compara as duas senhas e verificar se são iguais antes de cadastrar
+        if (senha !== reSenha) {
+            event.preventDefault();
+            msgErro.style.display = 'block';
+            msgErro.style.display = 'none'; 
+        }
+    });
+    </script>
+</body>
+</html>

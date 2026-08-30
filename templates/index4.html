@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="cbc">
+        <img src="{{ url_for('static', filename='imagens/logotipo.png') }}" alt="LOGORAA" id="logotRAA">
+        <nav class="links">
+            <a href="/" class="CBCBT"> INICIO </a>
+            <a href="/apresentacao" class="CBCBT"> QUEM SOMOS </a>
+            <a href="https://wa.me/qr/IWCJ2MPJQIIOI1" class="CBCBT"> CONTATE-NOS</a>
+        </nav>
+    </div>
+
+    <section id="cs">
+        <h1>login</h1>
+        <div id="csbox">
+
+            {% with messages = get_flashed_messages(with_categories= True)%}
+                {% if messages%}
+                    <div class="alert_div">
+                    {% for category, message in messages %}
+                    <div class="alert_{{ category }}">
+                        {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %} 
+            
+            <form action="/login" method="post" id="login_form">
+                <div class="CBT">
+                    <label for="name">Digite  Email: </label>
+                    <input type="text" name="lg_user" placeholder="" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="senha1">Digite sua senha: </label>
+                    <input type="password" name="lg_password" placeholder="**********" required>
+                </div>
+
+                <div id="cbtLG">
+                    <a href="/cadastro"> Não possui uma conta? Cadastre-se</a>
+                </div>
+
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

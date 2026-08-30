@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+     <section id="user_screen">
+
+            <div class="userCSS">
+                 <img src="{{ url_for('static', filename='imagens/user_img.png') }}" alt="Usuário" class="icons">
+                <p>{{user_name}}</p>
+        <hr>
+            </div>
+        <div CLASS="userCSS">
+           
+            <a href="index5.html">
+                 <img src="{{ url_for('static', filename='imagens/feed_icon.png') }}" alt="acessar Feed" class="icons">
+                Feed
+            </a>
+        </div>
+        <div class="userCSS">
+           
+            <a>
+                 <img src="{{ url_for('static', filename='imagens/doc_icon.png') }}" alt="acessar registros" class="icons">
+                meus registros
+            </a>
+        </div>
+      
+       <form action="/logout" method="post">
+            <button>
+                <img src="{{ url_for('static', filename='imagens/exit_icon.png') }}" alt="sair da sessão" class="icons">
+                SAIR DA SESSÃO</button>
+            </form>
+        
+
+        </section>
+        <section id="form_screen">
+             <h1>REGISTRO DE LOCAIS</h1>
+            <div id="csbox">
+            <form action="/upload" method="post" id="user_form" enctype="multipart/form-data">
+                <div class="CBT">
+                    <label for="name_abnd">Digite o nome do local: </label>
+                    <input type="text" name="name_abnd" placeholder="Caís do Sertão" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="situacao">Qual a situação do local?: </label>
+                        <select class="CBT" name="situacao" required>
+                            <option value="predio comercial">Prédio comercial abandonado</option>
+                            <option value="fabrica desativada">Fábrica ou indústria desativada</option>
+                            <option value="hospital desativado">Hospital ou clínica desativada</option>
+                            <option value="escola fechada">Escola ou creche fechada</option>
+                            <option value="hotel abandonado">Hotel ou resort abandonado</option>
+                            <option value="estacao ferroviaria">Estação ferroviária desativada</option>
+                            <option value="casarao antigo">Residência ou casarão antigo vazio</option>
+                            <option value="cinema fechado">Cinema ou teatro fechado</option>
+                            <option value="parque diversoes">Parque de diversões desativado</option>
+                            <option value="galpao armazem">Galpão de armazém portuário ou industrial</option>
+                            <option value="outro"> Outro...</option>
+                        </select>
+
+                </div>
+
+
+                  <div class="CBT">
+                    <label for="pr_name">Digite o nome do Próprietário:</label>
+                    <input type="text" name="pr_name" placeholder="São José">
+                </div>
+
+
+                <div class="CBT">
+                    <label for="senha1">Descreva o local: </label>
+                    <input type="text" name="desc" placeholder="O local é bem abandonado" required>
+                </div>
+
+                <div class="CBT">
+                    <label for="img">Coloque uma imagem do local: </label>
+                    <input type="file" name="img" required>
+                </div>
+
+              
+                <button type="submit">REGISTRAR</button>
+            </form>
+        </div>
+
+        </section>
+</body>
+</html> 

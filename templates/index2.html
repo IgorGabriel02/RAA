@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div id="cbc">
+        <img src="{{ url_for('static', filename='imagens/logotipo.png') }}" alt="LOGORAA" id="logotRAA">
+        <nav class="links">
+            <a href="/" class="CBCBT"> INICIO </a>
+            <a href="/apresentacao" class="CBCBT"> QUEM SOMOS </a>
+            <a href="https://wa.me/qr/IWCJ2MPJQIIOI1" class="CBCBT"> CONTATE-NOS</a>
+        </nav>
+    </div>
+
+    <section>
+        <div id="intro">
+            <div id="container-texts">
+                <p id="p1">
+                    <span id="title">QUEM SOMOS?</span> <br>
+                    O RAA é um sistema criado para registrar e identificar ambientes abandonados<br> ou que precisam de atenção. <br>Por meio dele, é possível informar o local e registrar suas condições para <br> o acompanhamento da situação.
+                    <br>O objetivo é ajudar a identificar esses espaços e <br>contribuir para que os responsáveis possam tomar as medidas <br> necessárias para melhorar a segurança e a conservação do ambiente.
+                </p>
+
+                <div id="container-buttons"> 
+                    <a href="/cadastro" class="INIBT">CADASTRE-SE</a>
+                    <a href="/login" class="INIBT" id="ini1">LOGIN</a>
+                </div>
+            </div>        
+
+            <img src="{{ url_for('static', filename='imagens/intro/abnd2.jpg') }}" alt="imagens de locais abandonados." id="imagens">
+        </div>
+    </section> 
+
+<script>
+const imagens_bd = ["{{ url_for('static', filename='imagens/intro/abnd2.jpg') }}",
+    "{{ url_for('static', filename='imagens/intro/abnd3.jpg') }}",
+    "{{ url_for('static', filename='imagens/intro/abnd4.jpg') }}"
+];
+
+let ind_atual = 0 
+
+const img = document.getElementById('imagens')
+
+
+function trocar_img(){
+    img.style.opacity = 0.8
+    img.style.transition = "opacity 0.8s ease-in-out"
+
+    setTimeout(() => {
+
+        ind_atual = (ind_atual + 1) % imagens_bd.length
+    img.src = imagens_bd[ind_atual]
+    img.style.opacity = 1
+    }, 400)
+
+}
+
+setInterval(trocar_img, 4000);
+</script>
+</body>
+</html>
