@@ -11,6 +11,8 @@ app.secret_key = 'Ig24032010@'
 
 msg_ant = get_flashed_messages
 
+#PASTA DE UPLOAD
+
 UPLOAD_FOLDER = os.path.join(
     app.root_path,
     'static',
@@ -25,7 +27,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 
-#PASTA DE UPLOAD
+
 
 with app.app_context():
     db.create_all()
